@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Database.Tables;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,10 @@ namespace MossMosqueBackEnd.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+
+            Dates d = new Dates();
+            d.Insert();
+
 
             return View();
         }
