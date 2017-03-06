@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MossMosqueBackEnd.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,20 @@ namespace MossMosqueBackEnd
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
+#if DEBUG
+            // redirect localhost
+            routes.MapRoute(
+                name: "LocalhostRedirect",
+                url: "",
+                defaults: new { controller = "Home", action = "Index", path = "http://www.moss.namaz.no" },
+                constraints: new
+                {
+                    subdomain = new SubdomainRouteConstraint("localhost")
+                }
+            );
+#endif
         }
     }
 }
